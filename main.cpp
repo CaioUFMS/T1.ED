@@ -31,10 +31,6 @@ void CalculaD(string Y, int m, int d[])
 	d[0] = -1;
 	while(k < m)
 	{
-		/*cout << Y[j] << " " << Y[k] <<endl;
-		cout << j << " " << k <<endl;//*/
-
-
 		if(Y[k] == Y[j])
 		{
 			d[k] = j;
@@ -43,7 +39,6 @@ void CalculaD(string Y, int m, int d[])
 		}
 		else
 		{
-			//cout << j << " " << k << endl;
 			if(j == 0)
 			{
 				d[k] = -1;
@@ -51,7 +46,7 @@ void CalculaD(string Y, int m, int d[])
 			}
 			else
 				j = d[j-1]+1;
-		}//*/
+		}
 	}
 }
 
@@ -75,14 +70,10 @@ int KMP(string X, string Y, int n, int m, int d[], int contaLinha)
 			{
 				igual = false;
 			}
-			//contador++;
 		}
 
 		if(igual)
 		{
-			//cout << Y << " " <<  contaLinha << endl;
-			//cout << "Houve casamento de " << Y << " na linha: " << contaLinha << endl;
-			//cout << "Iterações = " << contador << endl;
       casamentos[contador] = i - m;
       contador++;
 		}
@@ -90,16 +81,13 @@ int KMP(string X, string Y, int n, int m, int d[], int contaLinha)
 		if(j == 0)
 		{
 			i++;
-			//contador++;
 		}
 		else
 		{
 			j = d[j-1]+1;
-			//contador++;
 		}
 	}
-	//cout << "Não houve casamento" << endl;
-	//cout << "Iterações = " << contador << endl;
+
   if(contador == 0){
     return -1;
   }else{
@@ -144,12 +132,11 @@ int main(int argc, char *argv[])
           linha = Minuscula(linha);
           int n = linha.size();
           resultKmp = KMP(linha, palavra, n, m, d, contaLinha);
-          /*[TODO] Buscar palavra na linha com KMP*/
           //Checa se houve casamento
           if(resultKmp != -1){
             //Coloca o numero da linha na String X vezes, X sendo a quantidade de ocorrências
             for(int c = 1; c <= resultKmp; c++){
-              //Se for o primeiro casamento, inicia a string de saída, se não, concatena a linha do novo casamento ao final dela
+              //Se for o primeiro casamento da palavra, inicia a string de saída, se não, concatena a linha do(s) novo(s) casamento(s) ao final dela
               if(palavraAtual.empty()){
                 palavraAtual = palavra + " " + to_string(contaLinha);
               } else {
@@ -185,49 +172,5 @@ int main(int argc, char *argv[])
         }
     arqPalavra.close();
   }
-
-  
-	/*for(int i = 1; i < argc; i++)
-		cout << argv[i] << endl;
-  */
-	/*ifstream arquivoE; Abrir arquivo, ler, deu certo...
-
-	
-
-	arquivoE.open("texto.txt"); 
-
-	if(arquivoE.is_open()) {
-		while(getline(arquivoE, linha)) {
-			
-			cout << linha << endl;
-		}
-
-	} else {
-		cout << "N é possivel abrir" << endl;
-	}*/
-
-	
-
-	/*int n = cadeia.size() - 1;
-	int m = palavra.size() -1;
-
-
-	int d[m];
-	CalculaD(palavra, m, d);*/
-	//PrintCalculaD(m, d);
-
-
-
-	//cout << cadeia << endl;
-
-	
-
-
-
-	//cout << cadeia << endl << palavra << endl;
-
-	//KMP(cadeia, palavra, n, m, d);
-
-
     return 0;
 }
