@@ -1,8 +1,4 @@
-Good programming is not learned from
-generalities, but by seeing how significant
-programs can be made clean, easy to
-read.
-They are also easy to maintain and modify,
-human-engineered, efficient, and reliable,
-by the application of common sense and
-by the use of good programming practices.
+Quem casa quer casa. Porem ninguem casa.
+Ninguem quer casa tambem. Quer apartamento.
+Ninguem em casa. Todos sairam. Todos.
+Quer entrar? Quem? Quem?

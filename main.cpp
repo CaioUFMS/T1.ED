@@ -7,7 +7,7 @@
 
 using namespace std;
 
-string Minuscula(string s) // Função que transforma todo um texto em letras minúsculas
+string transformaMinuscula(string s) // Função que transforma todo um texto em letras minúsculas
 {
 	string nova_s;
 
@@ -17,15 +17,7 @@ string Minuscula(string s) // Função que transforma todo um texto em letras mi
 	return nova_s;
 }
 
-void PrintCalculaD(int m, int d[])
-{
-	for(int i = 0; i < m; i++)
-	{
-		cout << "d[" <<i << "] = " << d[i]+1 << endl;
-	}
-}
-
-void CalculaD(string Y, int m, int d[])
+void calculaD(string Y, int m, int d[])
 {
 	int j = 0, k = 1;
 	d[0] = -1;
@@ -50,7 +42,7 @@ void CalculaD(string Y, int m, int d[])
 	}
 }
 
-int KMP(string X, string Y, int n, int m, int d[], int contaLinha)
+int runKmp(string X, string Y, int n, int m, int d[], int contaLinha)
 {
 	int i = 0, j = 0, contador = 0;
   int casamentos[(X.size()/Y.size())];
@@ -119,7 +111,7 @@ int main(int argc, char *argv[])
       //Prepara e realiza o pré-processamento da palavra
       	int m = palavra.size();
 	    int d[m];
-	    CalculaD(palavra, m, d);
+	    calculaD(palavra, m, d);
       //Reinicia recursos para a saida das palavras
       contaLinha = 1;
       palavraAtual.clear();
@@ -129,9 +121,9 @@ int main(int argc, char *argv[])
       if (novaString.is_open()){
         //Executa um loop de busca para cada linha do texto
         while(getline(novaString, linha)){
-          linha = Minuscula(linha);
+          linha = transformaMinuscula(linha);
           int n = linha.size();
-          resultKmp = KMP(linha, palavra, n, m, d, contaLinha);
+          resultKmp = runKmp(linha, palavra, n, m, d, contaLinha);
           //Checa se houve casamento
           if(resultKmp != -1){
             //Coloca o numero da linha na String X vezes, X sendo a quantidade de ocorrências
